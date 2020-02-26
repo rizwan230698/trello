@@ -1,25 +1,44 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
+import React, { useState, useCallback } from "react";
+import CardListPreview from "./components/card-list-preview/CardListPreview";
+import { DragDropContext } from "react-beautiful-dnd";
 function App() {
+  const [isDragged, setIsDragged] = useState(false);
+  const [dragData, setDragData] = useState(null);
+
+  const onDragEnd = props => {
+    let { destination, source, draggableId } = props;
+    if (!destination) {
+      return;
+    }
+    if (
+      destination.droppableId === source.droppableId &&
+      destination.index === source.index
+    ) {
+      return;
+    }
+    setDragData({ destination, source, draggableId });
+    setIsDragged(true);
+  };
+  const resetDragData = useCallback(() => {
+    setIsDragged(false);
+    setDragData(null);
+  }, []);
+
+  const { source, destination, draggableId } = dragData || {};
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <DragDropContext onDragEnd={onDragEnd}>
+      <div>
+        <CardListPreview
+          isDragged={isDragged}
+          resetDragData={resetDragData}
+          droppableIdStart={dragData && source.droppableId}
+          droppableIdEnd={dragData && destination.droppableId}
+          droppableIndexEnd={dragData && destination.index}
+          droppableIndexStart={dragData && source.index}
+          draggableId={dragData && draggableId}
+        />
+      </div>
+    </DragDropContext>
   );
 }
 

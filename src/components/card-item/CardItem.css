@@ -1,0 +1,20 @@
+.card-item {
+  width: 100%;
+  padding: 10px 4px;
+  background-color: white;
+  border-radius: 3px;
+  margin-bottom: 8px;
+  color: black;
+  box-shadow: 0 1px 2px #777;
+}
+.delete-item-icon {
+  display: none !important;
+  padding: 3px 5px;
+  float: right;
+  font-size: 14px;
+  cursor: pointer;
+  color: #777;
+}
+.card-item:hover .delete-item-icon {
+  display: block !important;
+}

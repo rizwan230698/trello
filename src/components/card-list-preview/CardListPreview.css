@@ -1,0 +1,21 @@
+.card-list-preview {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 20px 10px;
+  display: flex;
+  align-items: flex-start;
+  width: 100vw;
+  height: 100vh;
+}
+
+.card > p {
+  color: #777;
+  border-radius: 3px;
+  padding: 4px;
+  cursor: pointer;
+}
+.card > p:hover {
+  color: black;
+  background-color: #f7f7f7;
+}

@@ -1,0 +1,12 @@
+.card {
+  padding: 10px;
+  background-color: #ebecf0;
+  min-width: 250px;
+  max-height: 80vh;
+  border-radius: 3px;
+  overflow: auto;
+}
+
+.card:not(:last-child) {
+  margin-right: 10px;
+}

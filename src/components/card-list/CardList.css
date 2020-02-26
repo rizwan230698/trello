@@ -1,0 +1,28 @@
+.card__title {
+  margin-bottom: 10px;
+}
+.plus-icon {
+  font-weight: 100;
+  margin-right: 8px;
+}
+.add-another-card {
+  color: #777;
+  border-radius: 3px;
+  padding: 4px;
+  cursor: pointer;
+}
+.add-another-card:hover {
+  color: black;
+  background-color: #f7f7f7;
+}
+
+.delete-list-icon {
+  float: right;
+  display: none;
+  cursor: pointer;
+  margin-right: 3px;
+  padding: 0 5px;
+}
+.card__title:hover .delete-list-icon {
+  display: block;
+}
