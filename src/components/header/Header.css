@@ -1,0 +1,88 @@
+.header {
+  height: 38px;
+  background: rgba(0, 0, 0, 0.15);
+  padding: 4px;
+  display: flex;
+  justify-content: space-between;
+}
+.items {
+  display: flex;
+  width: 40%;
+  color: white;
+}
+.item {
+  background-color: hsla(0, 0%, 100%, 0.3);
+  border-radius: 2px;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.item i {
+  font-size: 18px;
+  padding-right: 3px;
+}
+.header-input {
+  flex: 1;
+}
+.header-input input {
+  height: 100%;
+  background-color: hsla(0, 0%, 100%, 0.2);
+  border: none;
+  border-radius: 2px;
+  padding: 3px 10px;
+}
+.header-input i {
+  margin-left: -22px;
+  cursor: pointer;
+}
+.fa-times {
+  display: none;
+}
+.header-input input:focus {
+  outline: none;
+  width: 100%;
+  background-color: white;
+}
+.header-input input:focus ~ .fa-times {
+  display: inline-block;
+  color: black;
+}
+.header-input input:focus ~ .fa-search {
+  display: none;
+}
+
+.items.right {
+  justify-content: flex-end;
+}
+.item:hover {
+  background-color: hsla(0, 0%, 100%, 0.2);
+}
+div.avatar.item {
+  background: url("https://image.flaticon.com/icons/svg/145/145843.svg");
+  background-position: center;
+  background-size: cover;
+  width: 30px;
+  padding: 0px;
+  border-radius: 50%;
+}
+
+h2 {
+  width: 20%;
+}
+h2 i {
+  font-size: 12px;
+  padding-right: 3px;
+}
+h2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Noto Sans", Ubuntu, "Droid Sans", "Helvetica Neue", sans-serif;
+  line-height: 20px;
+  color: rgba(255, 255, 255, 0.7);
+}

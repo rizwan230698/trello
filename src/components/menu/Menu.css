@@ -1,0 +1,124 @@
+.menu {
+  height: 38px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px;
+  color: white;
+}
+.menu.left {
+  width: 40%;
+}
+.menu.right {
+  width: 14%;
+}
+.menu h3 {
+  margin-right: 10px;
+}
+.menu-item {
+  background-color: hsla(0, 0%, 100%, 0.3);
+  border-radius: 2px;
+  padding: 5px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  height: 100%;
+}
+.menu-item:hover {
+  background-color: hsla(0, 0%, 100%, 0.2);
+}
+.menu-item-divider {
+  border-right: 1px solid hsla(0, 0%, 100%, 0.24);
+  height: 16px;
+}
+.menu-avatar {
+  background: url("https://image.flaticon.com/icons/svg/145/145843.svg");
+  background-position: center;
+  background-size: cover;
+  width: 30px;
+  height: 100%;
+  padding: 0px;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+.side-drawer {
+  position: absolute;
+  top: 39px;
+  right: 0;
+  height: 93%;
+  width: 350px;
+  padding: 14px;
+  background-color: white;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+}
+.side-drawer h2 {
+  margin: 0 auto;
+  width: 95%;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+  color: black;
+}
+h2 span {
+  position: absolute;
+  right: 25px;
+  cursor: pointer;
+}
+
+.side-drawer__menu-item {
+  padding: 20px;
+  display: flex;
+  width: 65%;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+span.bg-color {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border-radius: 3px;
+}
+
+.colors {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+  padding: 25px;
+  display: none;
+}
+.color-item {
+  padding: 40px 50px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+#color-1 {
+  background-color: #0079bf !important;
+}
+#color-2 {
+  background-color: #d29034 !important;
+}
+#color-3 {
+  background-color: #519839 !important;
+}
+#color-4 {
+  background-color: #b04632 !important;
+}
+#color-5 {
+  background-color: #89609e !important;
+}
+#color-6 {
+  background-color: #cd5a91 !important;
+}
+#color-7 {
+  background-color: #4bbf6b !important;
+}
+#color-8 {
+  background-color: #00aecc !important;
+}
+#color-9 {
+  background-color: #838c91 !important;
+}

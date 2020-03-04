@@ -4,7 +4,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 15px;
-  background-color: rgb(81, 152, 57);
 }
 
 code {
@@ -15,4 +14,9 @@ code {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+.board {
+  background-color: rgb(81, 152, 57);
+  width: 100vw;
+  height: 100vh;
 }
