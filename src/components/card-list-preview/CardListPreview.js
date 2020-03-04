@@ -1,108 +1,14 @@
-import React, {
-  useState,
-  useRef,
-  useEffect,
-  useReducer,
-  useCallback
-} from "react";
+import React, { useState, useRef, useEffect, useReducer } from "react";
 import axios from "axios";
+import { Droppable, DragDropContext } from "react-beautiful-dnd";
+
 import "./CardListPreview.css";
 import CardList from "../card-list/CardList";
 import Form from "../form/Form";
 import Card from "../card/Card";
-import { Droppable } from "react-beautiful-dnd";
+import { listReducer } from "./list-reducer";
 
-const listReducer = (state, action) => {
-  switch (action.type) {
-    case "GET_ALL_LISTS":
-      return {
-        ...state,
-        lists: action.payload
-      };
-    case "ADD_NEW_LIST":
-      return {
-        ...state,
-        lists: [...state.lists, action.payload]
-      };
-    case "DELETE_LIST":
-      const filteredList = state.lists.filter(
-        list => list._id !== action.payload
-      );
-      return {
-        ...state,
-        lists: filteredList
-      };
-    case "ADD_NEW_LIST_ITEM":
-      const newState = { ...state };
-      const { item, listId } = action.payload;
-      const list = newState.lists.find(list => list._id === listId);
-      list.items = [...list.items, item];
-      return {
-        ...newState
-      };
-    case "DELETE_LIST_ITEM":
-      const updatedState = { ...state };
-      const { parentId, itemDeleteId } = action.payload;
-      const reqList = state.lists.find(list => list._id === parentId);
-      reqList.items = reqList.items.filter(item => item.id !== itemDeleteId);
-      return {
-        ...updatedState
-      };
-
-    case "DRAG_HAPPENED":
-      const {
-        droppableIdStart,
-        droppableIdEnd,
-        droppableIndexEnd,
-        droppableIndexStart,
-        draggableId,
-        type
-      } = action.payload;
-
-      //Dragging list around
-      if (type === "list") {
-        const newState = { ...state };
-        const list = newState.lists.splice(droppableIndexStart, 1);
-        newState.lists.splice(droppableIndexEnd, 0, ...list);
-
-        return newState;
-      }
-
-      //Dragged Item in same list
-      if (droppableIdStart === droppableIdEnd) {
-        const newState = { ...state };
-        const draggedList = state.lists.find(
-          list => list._id === droppableIdStart
-        );
-        const itemDragged = draggedList.items.splice(droppableIndexStart, 1);
-        draggedList.items.splice(droppableIndexEnd, 0, ...itemDragged);
-
-        return newState;
-      }
-      //Draging item to different list
-      if (droppableIdStart !== droppableIdEnd) {
-        const listDragStart = state.lists.find(
-          list => list._id === droppableIdStart
-        );
-        const itemDragged = listDragStart.items.splice(droppableIndexStart, 1);
-        const listDragEnd = state.lists.find(
-          list => list._id === droppableIdEnd
-        );
-        listDragEnd.items.splice(droppableIndexEnd, 0, ...itemDragged);
-      }
-      return {
-        ...state
-      };
-    default:
-      return state;
-  }
-};
-
-export default function CardListPreview({
-  isDragged,
-  resetDragData,
-  ...otherProps
-}) {
+export default function CardListPreview() {
   const [listReducerState, dispatch] = useReducer(listReducer, { lists: [] });
   const [inputValue, setInputValue] = useState("");
   const [showForm, setShowForm] = useState(false);
@@ -150,36 +56,6 @@ export default function CardListPreview({
     });
   };
 
-  const dragHappened = useCallback(() => {
-    const {
-      droppableIdStart,
-      droppableIdEnd,
-      droppableIndexEnd,
-      droppableIndexStart,
-      draggableId,
-      type
-    } = otherProps;
-
-    dispatch({
-      type: "DRAG_HAPPENED",
-      payload: {
-        droppableIdStart,
-        droppableIdEnd,
-        droppableIndexEnd,
-        droppableIndexStart,
-        draggableId,
-        type
-      }
-    });
-  }, [otherProps]);
-
-  useEffect(() => {
-    if (isDragged) {
-      dragHappened();
-      resetDragData();
-    }
-  }, [isDragged, resetDragData, dragHappened]);
-
   useEffect(() => {
     getAllList();
   }, []);
@@ -195,45 +71,71 @@ export default function CardListPreview({
   const closeForm = () => setShowForm(false);
   const openForm = () => setShowForm(true);
 
+  const onDragEnd = props => {
+    let { destination, source, draggableId, type } = props;
+    if (!destination) {
+      return;
+    }
+    if (
+      destination.droppableId === source.droppableId &&
+      destination.index === source.index
+    ) {
+      return;
+    }
+    dispatch({
+      type: "DRAG_HAPPENED",
+      payload: {
+        droppableIdStart: source.droppableId,
+        droppableIdEnd: destination.droppableId,
+        droppableIndexEnd: destination.index,
+        droppableIndexStart: source.index,
+        draggableId,
+        type
+      }
+    });
+  };
+
   return (
-    <Droppable droppableId="all-list" direction="horizontal" type="list">
-      {provided => (
-        <div
-          className="card-list-preview"
-          {...provided.droppableProps}
-          ref={provided.innerRef}
-        >
-          {listReducerState.lists.map((list, index) => (
-            <CardList
-              key={list._id}
-              list={list}
-              deleteList={deleteList}
-              createItem={createItem}
-              deleteItem={deleteItem}
-              index={index}
-            />
-          ))}
-          <Card>
-            {showForm ? (
-              <Form
-                onSubmit={addNewList}
-                onKeyDown={handleFormOnKeyDown}
-                ref={newListFormreF}
-                placeholder="Enter a title.."
-                value={inputValue}
-                onChange={handlechange}
-                btnText="Add new list"
-                onClick={closeForm}
+    <DragDropContext onDragEnd={onDragEnd}>
+      <Droppable droppableId="all-list" direction="horizontal" type="list">
+        {provided => (
+          <div
+            className="card-list-preview"
+            {...provided.droppableProps}
+            ref={provided.innerRef}
+          >
+            {listReducerState.lists.map((list, index) => (
+              <CardList
+                key={list._id}
+                list={list}
+                deleteList={deleteList}
+                createItem={createItem}
+                deleteItem={deleteItem}
+                index={index}
               />
-            ) : (
-              <p onClick={openForm}>
-                <span className="plus-icon">&#10010;</span> Add another list
-              </p>
-            )}
-          </Card>
-          {provided.placeholder}
-        </div>
-      )}
-    </Droppable>
+            ))}
+            <Card>
+              {showForm ? (
+                <Form
+                  onSubmit={addNewList}
+                  onKeyDown={handleFormOnKeyDown}
+                  ref={newListFormreF}
+                  placeholder="Enter a title.."
+                  value={inputValue}
+                  onChange={handlechange}
+                  btnText="Add new list"
+                  onClick={closeForm}
+                />
+              ) : (
+                <p onClick={openForm}>
+                  <span className="plus-icon">&#10010;</span> Add another list
+                </p>
+              )}
+            </Card>
+            {provided.placeholder}
+          </div>
+        )}
+      </Droppable>
+    </DragDropContext>
   );
 }
