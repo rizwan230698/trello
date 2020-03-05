@@ -15,14 +15,17 @@ export default function CardListPreview() {
   const newListFormreF = useRef();
 
   const getAllList = async () => {
-    const response = await axios.get("http://localhost:8080");
+    const response = await axios.get("https://trello-apis.herokuapp.com");
     dispatch({ type: "GET_ALL_LISTS", payload: response.data });
   };
 
   const addNewList = async event => {
     event.preventDefault();
     const newList = { title: inputValue };
-    const response = await axios.post("http://localhost:8080", newList);
+    const response = await axios.post(
+      "https://trello-apis.herokuapp.com",
+      newList
+    );
     dispatch({ type: "ADD_NEW_LIST", payload: response.data });
     setInputValue("");
     newListFormreF.current.focus();
@@ -30,14 +33,14 @@ export default function CardListPreview() {
 
   const deleteList = async id => {
     const response = await axios.delete(
-      `http://localhost:8080/deleteList/${id}`
+      `https://trello-apis.herokuapp.com/deleteList/${id}`
     );
     dispatch({ type: "DELETE_LIST", payload: response.data.id });
   };
 
   const createItem = async (listId, newItem) => {
     const response = await axios.patch(
-      `http://localhost:8080/${listId}/addItem`,
+      `https://trello-apis.herokuapp.com/${listId}/addItem`,
       newItem
     );
     dispatch({
@@ -48,7 +51,7 @@ export default function CardListPreview() {
 
   const deleteItem = async (listId, itemId) => {
     const response = await axios.delete(
-      `http://localhost:8080/${listId}/deleteItem/${itemId}`
+      `https://trello-apis.herokuapp.com/${listId}/deleteItem/${itemId}`
     );
     dispatch({
       type: "DELETE_LIST_ITEM",

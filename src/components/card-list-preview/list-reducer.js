@@ -29,7 +29,7 @@ export const listReducer = (state, action) => {
     case "DELETE_LIST_ITEM":
       const updatedState = { ...state };
       const { parentId, itemDeleteId } = action.payload;
-      const reqList = state.lists.find(list => list._id === parentId);
+      const reqList = updatedState.lists.find(list => list._id === parentId);
       reqList.items = reqList.items.filter(item => item.id !== itemDeleteId);
       return {
         ...updatedState

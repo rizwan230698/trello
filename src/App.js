@@ -4,15 +4,15 @@ import Header from "./components/header/Header";
 import Menu from "./components/menu/Menu";
 import "./components/menu/Menu.css";
 function App() {
-  const [color, setColor] = useState("color-1");
+  const [bgColor, setBgColor] = useState("color-1");
 
-  const changeColor = color => {
-    setColor(color);
+  const changeBgColor = color => {
+    setBgColor(color);
   };
   return (
-    <div className="board" id={`${color}`}>
+    <div className="board" id={`${bgColor}`}>
       <Header />
-      <Menu changeColor={changeColor} color={color} />
+      <Menu changeBgColor={changeBgColor} bgColor={bgColor} />
       <CardListPreview />
     </div>
   );

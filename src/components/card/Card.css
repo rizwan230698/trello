@@ -10,3 +10,12 @@
 .card:not(:last-child) {
   margin-right: 10px;
 }
+
+@media screen and (max-width: 800px) {
+  .card {
+    margin-bottom: 18px;
+  }
+  .card:not(:last-child) {
+    margin-right: 0px;
+  }
+}

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Menu.css";
 import StarBorderOutlinedIcon from "@material-ui/icons/StarBorderOutlined";
 
-export default function Menu({ color, changeColor }) {
+export default function Menu({ bgColor, changeBgColor }) {
   const [menu, setMenu] = useState(false);
   const showColor = () => {
     document.querySelector(".side-drawer__menu-item").style.display = "none";
@@ -53,52 +53,52 @@ export default function Menu({ color, changeColor }) {
             Menu <span onClick={closeMenu}>&#10005;</span>
           </h2>
           <div onClick={showColor} className="side-drawer__menu-item">
-            <span className="bg-color" id={color}></span>
+            <span className="bg-color" id={bgColor}></span>
             <p>Change Background</p>
           </div>
           <div className="colors">
             <div
-              onClick={() => changeColor("color-1")}
+              onClick={() => changeBgColor("color-1")}
               className="color-item"
               id="color-1"
             ></div>
             <div
-              onClick={() => changeColor("color-2")}
+              onClick={() => changeBgColor("color-2")}
               className="color-item"
               id="color-2"
             ></div>
             <div
-              onClick={() => changeColor("color-3")}
+              onClick={() => changeBgColor("color-3")}
               className="color-item"
               id="color-3"
             ></div>
             <div
-              onClick={() => changeColor("color-4")}
+              onClick={() => changeBgColor("color-4")}
               className="color-item"
               id="color-4"
             ></div>
             <div
-              onClick={() => changeColor("color-5")}
+              onClick={() => changeBgColor("color-5")}
               className="color-item"
               id="color-5"
             ></div>
             <div
-              onClick={() => changeColor("color-6")}
+              onClick={() => changeBgColor("color-6")}
               className="color-item"
               id="color-6"
             ></div>
             <div
-              onClick={() => changeColor("color-7")}
+              onClick={() => changeBgColor("color-7")}
               className="color-item"
               id="color-7"
             ></div>
             <div
-              onClick={() => changeColor("color-8")}
+              onClick={() => changeBgColor("color-8")}
               className="color-item"
               id="color-8"
             ></div>
             <div
-              onClick={() => changeColor("color-9")}
+              onClick={() => changeBgColor("color-9")}
               className="color-item"
               id="color-9"
             ></div>

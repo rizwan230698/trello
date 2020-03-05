@@ -30,3 +30,8 @@
   margin-right: 10px;
   padding: 0;
 }
+@media screen and (max-width: 980px) {
+  .list-container {
+    margin-right: 0;
+  }
+}
