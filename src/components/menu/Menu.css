@@ -69,7 +69,7 @@
 }
 @media screen and (max-width: 980px) {
   .side-drawer {
-    top: 180px;
+    top: 125px;
     width: 250px;
   }
 }
