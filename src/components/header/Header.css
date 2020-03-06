@@ -8,10 +8,13 @@
 @media screen and (max-width: 980px) {
   .header {
     flex-wrap: wrap;
+    justify-content: space-evenly;
     height: auto;
   }
   .header h2 {
     order: -1;
+    margin: 0 auto 10px;
+    width: 90%;
   }
 }
 .items {
@@ -21,7 +24,8 @@
 }
 @media screen and (max-width: 980px) {
   .items {
-    width: auto;
+    justify-content: flex-start;
+    width: 90%;
     margin-bottom: 8px;
   }
 }
@@ -46,6 +50,7 @@
 @media screen and (max-width: 980px) {
   .header-input {
     flex: 0;
+    display: none;
   }
 }
 .header-input input {
@@ -89,11 +94,11 @@
 .items.right {
   justify-content: flex-end;
 }
-/* @media screen and (max-width: 980px) {
+@media screen and (max-width: 980px) {
   .items.right {
-    justify-content: space-between;
+    justify-content: flex-end;
   }
-} */
+}
 .item:hover {
   background-color: hsla(0, 0%, 100%, 0.2);
 }
