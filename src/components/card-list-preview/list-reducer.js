@@ -3,7 +3,8 @@ export const listReducer = (state, action) => {
     case "GET_ALL_LISTS":
       return {
         ...state,
-        lists: action.payload
+        lists: action.payload,
+        isLoading: false
       };
     case "ADD_NEW_LIST":
       return {

@@ -22,6 +22,7 @@ code {
 @media screen and (max-width: 800px) {
   .board {
     height: auto;
+    min-height: 100vh;
     width: 100vw;
   }
 }

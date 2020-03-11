@@ -6,10 +6,14 @@ import "./CardListPreview.css";
 import CardList from "../card-list/CardList";
 import Form from "../form/Form";
 import Card from "../card/Card";
+import Spinner from "../spinner/Spinner";
 import { listReducer } from "./list-reducer";
 
 export default function CardListPreview() {
-  const [listReducerState, dispatch] = useReducer(listReducer, { lists: [] });
+  const [listReducerState, dispatch] = useReducer(listReducer, {
+    lists: [],
+    isLoading: true
+  });
   const [inputValue, setInputValue] = useState("");
   const [showForm, setShowForm] = useState(false);
   const newListFormreF = useRef();
@@ -97,6 +101,10 @@ export default function CardListPreview() {
       }
     });
   };
+
+  if (listReducerState.isLoading === true) {
+    return <Spinner />;
+  }
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
