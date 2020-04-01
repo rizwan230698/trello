@@ -58,8 +58,8 @@
   position: absolute;
   top: 39px;
   right: 0;
-  height: 93%;
-  min-height: 600px;
+  max-height: auto;
+  min-height: 540px;
   width: 350px;
   padding: 14px;
   background-color: white;

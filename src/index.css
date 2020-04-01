@@ -19,7 +19,7 @@ code {
   width: 100%;
   height: 100vh;
 }
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 980px) {
   .board {
     height: auto;
     min-height: 100vh;
