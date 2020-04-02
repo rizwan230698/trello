@@ -13,10 +13,10 @@
   }
 }
 .menu.left {
-  width: 40%;
+  width: auto;
 }
 .menu.right {
-  width: 14%;
+  width: auto;
 }
 @media screen and (max-width: 980px) {
   .menu.left,
@@ -36,6 +36,7 @@
   justify-content: center;
   cursor: pointer;
   height: 100%;
+  margin: 0 4px;
 }
 .menu-item:hover {
   background-color: hsla(0, 0%, 100%, 0.2);
@@ -53,6 +54,7 @@
   padding: 0px;
   border-radius: 50%;
   margin-right: 5px;
+  margin: 0 4px;
 }
 .side-drawer {
   position: absolute;
