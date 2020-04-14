@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/trello-clone/static/css/main.987cb0de.chunk.css",
-    "main.js": "/trello-clone/static/js/main.01c214f7.chunk.js",
-    "main.js.map": "/trello-clone/static/js/main.01c214f7.chunk.js.map",
-    "runtime-main.js": "/trello-clone/static/js/runtime-main.17cd50a1.js",
-    "runtime-main.js.map": "/trello-clone/static/js/runtime-main.17cd50a1.js.map",
-    "static/js/2.e753b438.chunk.js": "/trello-clone/static/js/2.e753b438.chunk.js",
-    "static/js/2.e753b438.chunk.js.map": "/trello-clone/static/js/2.e753b438.chunk.js.map",
-    "index.html": "/trello-clone/index.html",
-    "precache-manifest.ca85d3226fc3a253491c7c7c4062b634.js": "/trello-clone/precache-manifest.ca85d3226fc3a253491c7c7c4062b634.js",
-    "service-worker.js": "/trello-clone/service-worker.js",
-    "static/css/main.987cb0de.chunk.css.map": "/trello-clone/static/css/main.987cb0de.chunk.css.map",
-    "static/js/2.e753b438.chunk.js.LICENSE.txt": "/trello-clone/static/js/2.e753b438.chunk.js.LICENSE.txt"
+    "main.css": "/trello/static/css/main.987cb0de.chunk.css",
+    "main.js": "/trello/static/js/main.01c214f7.chunk.js",
+    "main.js.map": "/trello/static/js/main.01c214f7.chunk.js.map",
+    "runtime-main.js": "/trello/static/js/runtime-main.61d56a46.js",
+    "runtime-main.js.map": "/trello/static/js/runtime-main.61d56a46.js.map",
+    "static/js/2.e753b438.chunk.js": "/trello/static/js/2.e753b438.chunk.js",
+    "static/js/2.e753b438.chunk.js.map": "/trello/static/js/2.e753b438.chunk.js.map",
+    "index.html": "/trello/index.html",
+    "precache-manifest.593c4c1d2cdca14cbb725c754fd0aa16.js": "/trello/precache-manifest.593c4c1d2cdca14cbb725c754fd0aa16.js",
+    "service-worker.js": "/trello/service-worker.js",
+    "static/css/main.987cb0de.chunk.css.map": "/trello/static/css/main.987cb0de.chunk.css.map",
+    "static/js/2.e753b438.chunk.js.LICENSE.txt": "/trello/static/js/2.e753b438.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.17cd50a1.js",
+    "static/js/runtime-main.61d56a46.js",
     "static/js/2.e753b438.chunk.js",
     "static/css/main.987cb0de.chunk.css",
     "static/js/main.01c214f7.chunk.js"
