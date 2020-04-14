@@ -2,6 +2,7 @@
   "name": "trello-clone",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://rizwan230698.github.io/chat-room",
   "dependencies": {
     "@material-ui/core": "^4.9.4",
     "@material-ui/icons": "^4.9.1",
@@ -23,7 +24,6 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
-  "homepage": "https://rizwan230698.github.io/chat-room",
   "eslintConfig": {
     "extends": "react-app"
   },
